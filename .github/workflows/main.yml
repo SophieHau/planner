@@ -1,15 +1,11 @@
-on: pull_request
+on:
+  pull_request:
+    types: [ closed ]
 
 jobs:
-  example_comment_pr:
+  comment:
     runs-on: ubuntu-latest
-    name: An example job to comment a PR
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
 
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@master
-        with:
-          message: 'Example of message !'
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: add a comment
+      uses: SophieHau/pr-comment-action@v36
